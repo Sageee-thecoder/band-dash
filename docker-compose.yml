@@ -1,0 +1,23 @@
+version: '3.9'
+services:
+  mongo:
+    image: mongo:7
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/db
+
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: rnus
+      POSTGRES_PASSWORD: rnus
+      POSTGRES_DB: rnus_analytics
+    ports:
+      - '5432:5432'
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+volumes:
+  mongo_data:
+  pg_data:
